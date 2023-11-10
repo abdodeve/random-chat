@@ -1,30 +1,25 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-// import { SafeAreaProvider } from "react-native-safe-area-context";
-// import { createTheme, ThemeProvider } from "@rneui/themed";
-// import Component from "./components/MyComponent";
 
-// const theme = createTheme({
-//   lightColors: {},
-//   darkColors: {},
-// });
+// In App.js in a new project
 
-export default function App() {
+import * as React from 'react';
+import { Button, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './src/components/screens/HomeScreen';
+import ChargingScreen from "./src/components/screens/ChargingScreen";
+
+
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    // <SafeAreaProvider>
-    //   <ThemeProvider theme={theme}>
-    //     <Component />
-    //   </ThemeProvider>
-    // </SafeAreaProvider>
-    <Text>Start Using RNE </Text>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="H">
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="ChargingScreen" component={ChargingScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
+export default App;
