@@ -1,6 +1,6 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+// import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createTheme, ThemeProvider, Button } from "@rneui/themed";
 import Component from "./src/components/MyComponent";
@@ -9,52 +9,44 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NavigationProp } from "@react-navigation/native";
 import ChatsScreen from "./src/screens/ChatsScreen";
 import SearchingScreen from "./src/screens/SearchingScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import { makeStyles } from "@rneui/themed";
+import { Platform, StatusBar } from "react-native";
 
 const theme = createTheme({
   lightColors: {},
   darkColors: {},
 });
 
-function HomeScreen({ navigation }: { navigation: NavigationProp<any, any> }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to ChatsScreen"
-        onPress={() => navigation.navigate("ChatsScreen")}
-      />
-    </View>
-  );
-}
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="Home"
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="ChatsScreen" component={ChatsScreen} />
-            <Stack.Screen name="SearchingScreen" component={SearchingScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      }}
+    >
+      <SafeAreaProvider>
+        <ThemeProvider theme={theme}>
+          <NavigationContainer>
+            <Stack.Navigator
+              initialRouteName="Home"
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="ChatsScreen" component={ChatsScreen} />
+              <Stack.Screen
+                name="SearchingScreen"
+                component={SearchingScreen}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
