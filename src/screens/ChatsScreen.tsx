@@ -10,10 +10,10 @@ export default function ChatsScreen({
 }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>ChatsScreen</Text>
+      <Text>Go to Home Screen</Text>
       <Button
-        title="Go to SearchingScreen"
-        onPress={() => navigation.navigate("SearchingScreen")}
+        title="Go to Home Screen"
+        onPress={() => navigation.navigate("HomeScreen")}
       />
     </View>
   );
