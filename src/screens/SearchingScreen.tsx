@@ -10,15 +10,8 @@ export default function SearchingScreen({
 }) {
   useEffect(() => {
     setTimeout(() => {
-      Alert.alert("Congratulations !", " You have a new match !", [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => navigation.navigate("ChatsScreen") },
-      ]);
-    }, 5000);
+      navigation.navigate("ChatsScreen");
+    }, 500);
   }, []);
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -35,7 +28,7 @@ export default function SearchingScreen({
           textAlign: "center",
         }}
       >
-        Searching for a stringer ...
+        Searching for a stranger...
       </Text>
 
       {/* <Button title="Go to Home" onPress={() => navigation.navigate("Home")} /> */}

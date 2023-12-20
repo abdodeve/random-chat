@@ -94,7 +94,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
             marginVertical: 10,
           }}
           titleStyle={{ fontWeight: "bold" }}
-          onPress={() => navigation.navigate("ChatsScreen")}
+          onPress={() => navigation.navigate("SearchingScreen")}
         />
       </View>
     </View>
