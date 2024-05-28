@@ -21,7 +21,7 @@ export default function ChatsScreen({
 }: {
   navigation: NavigationProp<any, any>;
 }) {
-  const [messages, setMessages] = React.useState<string[]>(["hello"]);
+  const [messages, setMessages] = React.useState<string[]>(["Very well"]);
   const [inputMessage, setInputMessage] = React.useState<string>("");
 
   return (
